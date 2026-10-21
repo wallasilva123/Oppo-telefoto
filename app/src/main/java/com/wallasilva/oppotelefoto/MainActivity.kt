@@ -135,8 +135,8 @@ class MainActivity : Activity() {
         try {
             activeArray?.let { rect ->
                 val factor = 1f + (maxZoom - 1f) * zoom.progress / 100f
-                val w = (rect.width() / factor).coerceAtLeast(1)
-                val h = (rect.height() / factor).coerceAtLeast(1)
+                val w = (rect.width() / factor).toInt().coerceAtLeast(1)
+                val h = (rect.height() / factor).toInt().coerceAtLeast(1)
                 b.set(CaptureRequest.SCALER_CROP_REGION, Rect(rect.centerX()-w/2, rect.centerY()-h/2, rect.centerX()+w/2, rect.centerY()+h/2))
             }
             b.set(CaptureRequest.CONTROL_MODE, CaptureRequest.CONTROL_MODE_AUTO)
